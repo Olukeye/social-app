@@ -6,12 +6,12 @@ const helmet =   require('helmet')
 const morgan = require('morgan');
 const mailgun = require("mailgun-js");
 
-(async () => await connection())()
+ connection()
 
 //  Routes
 const authRouter       = require('./routes/auth') ;
 const userRouter       = require('./routes/user');
-// const categoryRouter   = require('./routes/category');
+// const postRouter   = require('./routes/post');
 // const productRouter    = require('./routes/product');
 
 

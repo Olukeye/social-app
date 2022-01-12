@@ -4,10 +4,8 @@ const bcrypt = require('bcrypt')
 const router  = new express.Router()
 
 exports.update =  async(req, res) => {
-        // if is userId or user is Admin , update.
-        if(req.body.userId === req.params.id || req.user.isAdmin) {
-            // encript password if match
-            if(req.body.password) {
+        if(req.body.userId === req.params.id || req.user.isAdmin) {     // if is userId or user is Admin , update.
+            if(req.body.password) {     // encript password if match
         try{
             const salt = await bcrypt.genSalt(10);  //>>> hashPassword
             req.body.password = await bcrypt.hash(req.body.password, salt, process.env.SECRET_KEY).toString();
@@ -23,7 +21,7 @@ exports.update =  async(req, res) => {
         res.status(403).json("updated!")
     }
     } else {
-        res.status(403).json("Allowed to update account only!")
+        res.status(403).json("You can update only your account!")
     }
 }
 
@@ -42,6 +40,7 @@ exports.follow = async(req, res) => {
     // check if user are same
     if (req.body.userId !== req.params.id) {
         try{
+
         const followedMe = await User.findById(req.params.id);
         const iFollowed = await User.findById(req.body.userId);
 
@@ -58,8 +57,21 @@ exports.follow = async(req, res) => {
     }
 }
 
+exports.unFollow = async(req, res) => {
+    // check if user are same
+    if (req.body.userId !== req.params.id) {
+        try{
 
+            const unfollowedMe = await User.findById(req.params.id);
+            const iUnFollowed = await User.findById(req.body.userId);
 
-// exports.remove = () => {
-
-// }
+            if(unfollowedMe.followers.includes(req.body.userId)) {    //if the user of account is not following, add to followers
+                await unfollowedMe.updateOne({$pull: {followers: req.body.userId }});
+                await iUnFollowed .updateOne({$pull: {following: req.params.id }})
+                res.status(200).json("You unfollowed!!!")
+            }                 
+        } catch(err) {
+            res.status(401).json(err)
+        }
+    }
+}
