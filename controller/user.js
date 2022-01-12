@@ -28,15 +28,37 @@ exports.update =  async(req, res) => {
 }
 
 exports.read = async(req, res ) => {
-    try{
+try{
  const user = await User.findById(req.params.id);
  const { password,updatedAt, ...other } = user._doc;
  res.status(200).json(other)
- 
+
  } catch(err){
   res.status(500).json(err)
  }
 }
+
+exports.follow = async(req, res) => {
+    // check if user are same
+    if (req.body.userId !== req.params.id) {
+        try{
+        const followedMe = await User.findById(req.params.id);
+        const iFollowed = await User.findById(req.body.userId);
+
+        if(!followedMe.followers.includes(req.body.userId)) {    //if the user of account is not following, add to followers
+            await followedMe.updateOne({$push: {followers: req.body.userId }});
+            await iFollowed .updateOne({$push: {following: req.params.id }})
+            res.status(200).json("followed!!!")
+        } else {
+            res.status(403).json("You are already a follower!")
+        }                     
+        } catch(err) {
+            res.status(401).json(err)
+        }
+    }
+}
+
+
 
 // exports.remove = () => {
 

@@ -27,8 +27,8 @@ app.use(express.json());
 
 
 // routes middleware
-app.use('/api/auth', authRouter)
-app.use('/api/user', userRouter)
+app.use('/api', authRouter)
+app.use('/api', userRouter)
 
 
 
