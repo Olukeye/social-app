@@ -35,5 +35,5 @@ app.use('/api', userRouter)
 
 const port = process.env.PORT 
 app.listen(port, () => {
-    console.log(`Server is runnung on port  ${port}`)
+    console.log(`🚀 Gateway Server Is Runnung on port  ${port}`)
 })
