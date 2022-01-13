@@ -11,7 +11,7 @@ const mailgun = require("mailgun-js");
 //  Routes
 const authRouter       = require('./routes/auth') ;
 const userRouter       = require('./routes/user');
-// const postRouter   = require('./routes/post');
+const postsRouter   = require('./routes/posts');
 // const productRouter    = require('./routes/product');
 
 
@@ -27,8 +27,9 @@ app.use(express.json());
 
 
 // routes middleware
-app.use('/api', authRouter)
-app.use('/api', userRouter)
+app.use('/api', authRouter);
+app.use('/api', userRouter);
+app.use('/api', postsRouter);
 
 
 
