@@ -1,7 +1,5 @@
-const express = require('express')
 const User = require('../model/user')
 const bcrypt = require('bcrypt')
-const router  = new express.Router()
 
 exports.update =  async(req, res) => {
         if(req.body.userId === req.params.id || req.user.isAdmin) {     // if is userId or user is Admin , update.
