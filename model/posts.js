@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema;
 
-const postSchema = new mongoose.Schema({
+
+const postSchema = mongoose.Schema({
     userId: {
-        type:String,
-        required: true
+        type:ObjectId,
+        ref: 'User',
+        // required:true
     },
     description: {
         type:String,
@@ -12,10 +15,35 @@ const postSchema = new mongoose.Schema({
     img: {
         type:String
     },
-    likes: {
-        type: Array,
-        default:[]
-    }
+    likes:[
+        {
+        type:ObjectId,
+        ref: 'User', 
+        }
+    ],
+    disLikes:[
+        {
+        type:ObjectId,
+        ref: 'User', 
+        }
+    ],
+    // likes: {
+    //     type: Array,
+    //     default:[]
+    // },
+    comment: [
+        {
+            user:{
+                type:ObjectId,
+                ref: 'User',
+                required:true 
+            },
+            text:{
+                type:String,
+                required:true
+            }
+        }
+    ],
 }, { timestamps: true} )
 
 module.exports = mongoose.model("Post", postSchema);
