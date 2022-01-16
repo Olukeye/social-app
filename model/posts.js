@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
-const {ObjectId} = mongoose.Schema;
+const Schema = mongoose.Schema;
+const ObjectId = Schema.Types.ObjectId;
 
 
-const postSchema = mongoose.Schema({
+const postSchema = new mongoose.Schema({
     userId: {
         type:ObjectId,
         ref: 'User',
@@ -35,8 +36,7 @@ const postSchema = mongoose.Schema({
         {
             user:{
                 type:ObjectId,
-                ref: 'User',
-                required:true 
+                ref: 'User', 
             },
             text:{
                 type:String,
