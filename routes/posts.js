@@ -2,10 +2,10 @@ const express = require("express");
 const router = new express.Router();
 
 
-const {createPost} = require('../controller/posts');
+const {createPost, updatePost} = require('../controller/posts');
 
 router.post('/posts', createPost)
-
+router.put('/post/:id', updatePost )
 
 
 

@@ -36,7 +36,7 @@ const postSchema = new mongoose.Schema({
             user:{
                 type:ObjectId,
                 ref: 'User', 
-            },
+              },
             text:{
                 type:String,
                 required:true
