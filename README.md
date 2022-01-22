@@ -18,16 +18,7 @@ node -v
 nodemon 
 ```
 
-Open [http://localhost:5000](http://localhost:5000) with your browser to see the result.
-
-### Frontend
-
-```bash
-npm start or nodemon to run the app.
-
-```
-
-Open [http://localhost:2021](http://localhost:2021) with your browser to see the result.
+Open [http://localhost:2021](http://localhost:2022) with your browser to see the result.
 
 ## RUNNING NPM COMMANDS
 
@@ -39,16 +30,6 @@ npm backend <command>
 for example
 
 npm i 
-```
-
-### Frontend
-
-```
-npm I to install the necessary dependencies <command>
-
-for example
-
-npm start 
 ```
 
 ## Editor setup
