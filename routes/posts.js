@@ -7,6 +7,7 @@ const {createPost, updatePost, deletePost, likesPost} = require('../controller/p
 router.post('/posts', createPost)
 router.put('/post/:id', updatePost )
 router.put('/post/:id/like', likesPost)
+// router.put('/post/:id/dislike', dislikePost)
 router.delete('/post/:id', deletePost)
 
 

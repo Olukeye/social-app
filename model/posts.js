@@ -21,6 +21,16 @@ const postSchema = new mongoose.Schema({
         ref: 'User', 
         }
     ],
+    disLikes:[
+        {
+        type:ObjectId,
+        ref: 'User', 
+        }
+    ],
+    // likes: {
+    //     type: Array,
+    //     default:[]
+    // },
     comment: [
         {
             user:{

@@ -52,6 +52,7 @@ exports.likesPost = async(req, res) => {
         await post.updateOne({$push: { likes: req.body.userId }}, {new:true})
         res.status(200).json(" liked!!")
     } else {
+        // Dislike a post on second CLICK
         await post.updateOne({$pull: { likes: req.body.userId }})
         res.status(403).json("Disliked")
     }
@@ -63,9 +64,9 @@ exports.likesPost = async(req, res) => {
 // exports.dislikePost = async(req, res) => {
 //     try{
 //        //  like a post
-//        const dislike = await Post.findById(req.params.id);
-//        if(!dislike.disLikes.includes(req.body.userId)) {
-//            await dislike.updateOne({$pull: { disLikes: req.body.userId }})
+//        const post = await Post.findById(req.params.id);
+//        if(post.likes.includes(req.body.userId)) {
+//            await post.updateOne({$pull: { likes: req.body.userId }})
 //            res.status(200).json(" Disliked!!")
 //        } 
 //     } catch(err) {
