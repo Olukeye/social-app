@@ -32,12 +32,14 @@ for example
 npm i 
 ```
 ### Features
+...
+User
 user sign up 
 user can login
 user can update
 Follow and be unFollowed
 
-# Post
+Post
 Make a post
 Update a post
 Delete a post
