@@ -43,8 +43,8 @@ exports.follow = async(req, res) => {
         const iFollowed = await User.findById(req.body.userId);
 
         if(!followedMe.followers.includes(req.body.userId)) {    //if the user of account is not following, add to followers
-            await followedMe.updateOne({$push: {followers: req.body.userId }});
-            await iFollowed .updateOne({$push: {following: req.params.id }})
+            await followedMe.updateOne({$push: {following: req.body.userId }});
+            await iFollowed .updateOne({$push: {followers: req.params.id }})
             res.status(200).json("followed!!!")
         } else {
             res.status(403).json("You are already a follower!")
@@ -63,9 +63,9 @@ exports.unFollow = async(req, res) => {
             const unfollowedMe = await User.findById(req.params.id);
             const iUnFollowed = await User.findById(req.body.userId);
 
-            if(unfollowedMe.followers.includes(req.body.userId)) {    //if the user of account is not following, add to followers
-                await unfollowedMe.updateOne({$pull: {followers: req.body.userId }});
-                await iUnFollowed .updateOne({$pull: {following: req.params.id }})
+            if(!unfollowedMe.followers.includes(req.body.userId)) {    //if the user of account is not following, add to followers
+                await unfollowedMe.updateOne({$pull: {following: req.body.userId }});
+                await iUnFollowed.updateOne({$pull: {followers: req.params.id }})
                 res.status(200).json("You unfollowed!!!")
             }                 
         } catch(err) {

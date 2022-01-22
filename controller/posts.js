@@ -43,3 +43,32 @@ exports.deletePost = async(req, res) => {
         res.status(500).json(err);
     }
 }
+
+exports.likesPost = async(req, res) => {
+ try{
+    //  like a post
+    const post = await Post.findById(req.params.id);
+    if(!post.likes.includes(req.body.userId)) {
+        await post.updateOne({$push: { likes: req.body.userId }}, {new:true})
+        res.status(200).json(" liked!!")
+    } else {
+        await post.updateOne({$pull: { likes: req.body.userId }})
+        res.status(403).json("Disliked")
+    }
+ } catch(err) {
+     res.status(500).json(err)
+ }
+}
+
+// exports.dislikePost = async(req, res) => {
+//     try{
+//        //  like a post
+//        const dislike = await Post.findById(req.params.id);
+//        if(!dislike.disLikes.includes(req.body.userId)) {
+//            await dislike.updateOne({$pull: { disLikes: req.body.userId }})
+//            res.status(200).json(" Disliked!!")
+//        } 
+//     } catch(err) {
+//         res.status(500).json(err)
+//     }
+// }
