@@ -37,13 +37,13 @@ USER 👤
 user sign up 
 user can login
 user can update
-Follow and
+follow & unFollow
 
 POST 📯 
 Make a post
 Update a post
 Delete a post
-Like and unlike a post
+like and unLike a post
 
 ```
 
