@@ -31,6 +31,17 @@ for example
 
 npm i 
 ```
+### Features
+user sign up 
+user can login
+user can update
+Follow and be unFollowed
+
+# Post
+Make a post
+Update a post
+Delete a post
+Like and unlike a post
 
 ## Editor setup
 
