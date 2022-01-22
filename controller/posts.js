@@ -2,13 +2,10 @@ const Post = require('../model/posts')
 
 // create a post
 exports.createPost = async(req, res ) => {
-    const post = await new Post(
-        req.body
-    )
+    const post = await new Post(req.body)
     try{
         if(req.body.description.length == 0) {
             res.status(300).json("Post Cant Be Empty!");
-            
         } else {
         const savePost = await post.save();
         res.status(200).json(savePost);
@@ -19,7 +16,6 @@ exports.createPost = async(req, res ) => {
 }
 
 exports.updatePost = async(req, res) => {   
-
     const post = await Post.findById(req.params.id);
     if(post.userId == req.body.userId) {
         try{
