@@ -53,13 +53,3 @@ We're using prettier for code formating, make sure you install prettier plugins 
 see linting errors as you code and have your code formatted on save by prettier. If formatOnSave doesn't work please google how to set up
 and save prettier plugins in your editor
 
-## Project structure
-
-
-## Contributing
-
-For detailed information on how to go about contribution. Check out the [Contribution Guide](docs/CONTRIBUTING.md)
-
-**Before send PR or making a merge make sure you code is properly formatted.** You can easily do that by running
-
-```
